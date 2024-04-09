@@ -1,0 +1,195 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Noto Sans', sans-serif;
+    }
+
+    body, html{
+        background-color: white;
+    }
+
+    .menu-login{
+    width: 100vw;
+    height: 82vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: hsl(203, 5%, 52%);
+    }
+
+    .esquerda-login{
+        width: 50vw;
+        height: 82vh;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .esquerda-login > h1, h2{
+        color: #77ffc0;
+    }
+
+
+    .esquerda-login > img{
+        width: 35vw;
+    
+    }
+
+    .direita-login{
+        width: 55vw;
+        height: 82vh;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cadastro{
+        width: 65%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        padding: 30px 35px;
+        background-color: #0096c7;
+
+        border-radius: 20px;
+        box-shadow: 0px 10px 40px #00000056;
+    }
+
+    .cadastro > h1{
+        color: #00ff88;
+        font-weight: bold;
+    }
+
+    .cadastro > form{
+        width: 100%;
+    }
+
+    .campos-dados{
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .cadastro > form > input{ /*Estilização do botão*/
+        display: block;
+        width: 100%;
+
+        padding: 16px 0px;
+        margin: 25px auto 15px auto;
+
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0px 7px 30px #00ff802a;
+
+        color: #2b134b;
+        background-color: #00ff88;
+        font-weight: 800;
+        letter-spacing: 2px; /*Espacamento entre as letra*/
+
+        cursor: pointer;
+    }
+
+    .cadastro > form > div{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .cadastro > form > div > label{
+        color: #e4e4e4;
+        margin: 5px 0px;
+    }
+
+    .cadastro > form > div > input{
+        height: 25px;
+        color: #f0ffffde;
+        background-color: #3a80cf;
+        border: none;
+        border-radius: 7px;
+        box-shadow: 0px 10px 20px #00000056;
+        padding: 7px;
+    }
+
+    footer{
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        padding: 21px;
+    }
+
+    @media screen and (max-width: 850px) {
+        .menu-login{
+            flex-direction: column;
+        }
+
+        .esquerda-login{
+            width: 100%;
+            height: 35%;
+
+            margin-bottom: 30px;
+        }
+
+        .esquerda-login > img{
+            width: 40%;
+        }
+
+        .direita-login{
+            width: 100%;
+            height: 50%;
+        }
+
+        .cadastro{
+            width: 85%;
+            padding-bottom: 10px;
+        }
+    }
+
+    @media screen and (max-width: 680px) {
+        .esquerda-login > img{
+            width: 50%;
+        }
+    }
+</style>
+
+<main class="menu-login">
+    <div class="esquerda-login">
+        <h1>Faça o login </h1>
+        <h2>E adiquira hoje o seu novo veículo</h2>
+    </div>
+    <div class="direita-login">
+        <div class="cadastro">
+            <h1>Login</h1>
+            <form method="POST" autocomplete="on">
+                {% csrf_token %}
+
+                
+                <div class="form-group">
+                    {{ login_form.username.errors }}
+                    <label>Usuário: </label>
+                    {{ login_form.username }}
+                </div>
+
+                <div class="form-group">
+                    {{ login_form.password.errors }}
+                    <label>Senha: </label>
+                    {{ login_form.password }}
+                </div>
+
+                <input type="submit" value="LOGIN"></input>
+            </div>
+        </form>
+    </div>
+</main>
+{% endblock %}
