@@ -6,4 +6,4 @@ FRONT-END
 
 BACK-END
 
--feito com django e sqlite, feito pelo próprio orm do django.
+- Feito com django e sqlite, feito pelo próprio orm do django.
