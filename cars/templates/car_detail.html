@@ -2,22 +2,24 @@
 
 {% block content %}
   <style>
+    body{
+      background-color: #2f2841;
+    }
+
+    main{
+      background-color: #2f2841;
+    }
+
     .car-card {
       background-color: #e3e1e1;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
       border-radius: 10px;
       overflow: hidden;
       text-align: center;
-      transition: all 0.3s ease;
+      
       max-width: 500px;
       margin: 20px auto 0;
       margin-bottom: 20px;
-    }
-
-    .car-card:hover {
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-      transform: translateY(-2px);
     }
 
     .car-card img {
@@ -45,8 +47,8 @@
 
     .btn {
       display: inline-block;
-      background-color: #0096c7;
-      color: #fff;
+      background-color: #00ff88;
+      color: #e4e4e4;
       border: none;
       padding: 10px 20px;
       font-size: 16px;
@@ -66,7 +68,7 @@
     }
 
     .btn-danger:hover {
-      background-color: #d2221c;
+      background-color: #108eb8;
     }
 
     .error-message {

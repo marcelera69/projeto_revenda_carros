@@ -9,7 +9,7 @@
     body {
         font-family: 'Open Sans', sans-serif;
         background-color: #f7f7f7;
-        color: #333;
+        color: #201b2c;
         margin: 0;
         padding: 0;
     }
@@ -18,24 +18,28 @@
         background-color: #0096c7;
         color: #fff;
         text-align: center;
-    }
 
-    footer {
-        background-color: #ccc;
-        color: #333;
+      }
+      
+      footer {
+        background-color: #00ff88;
+        color: #201b2c;
         padding: 7px;
         text-align: center;
-    }
-
-    nav {
+      }
+      
+      nav {
         display: flex;
-        background-color: #0096c7;
+        justify-content: space-between;
+        align-items: center;
+        
+        background-color: #201b2c;
         color: #fff;
         height: 50px;
-        justify-content: space-between;
-        display: flex;
-        align-items: center;
-    }
+        
+        box-shadow: 0px 5px 7px #0000001c;
+        z-index: 0;
+      }
 
     nav ul {
         list-style: none;
@@ -45,11 +49,12 @@
     }
 
     nav ul li {
+      margin: 2px;
       padding: 0px;
     }
 
     nav ul li a {
-        color: #fff;
+        color: #77ffc0;
         text-decoration: none;
         font-size: 16px;
         transition: all 0.3s ease;
@@ -58,7 +63,8 @@
     }
 
     nav ul li a:hover {
-        background-color: #32bbe8;
+        background-color: #00ff88;
+        color: white;
     }
 
     nav ul li.active a {
@@ -71,6 +77,7 @@
     
     div.bemvindo-user{
       font-size: medium;
+      color: #77ffc0;
       padding: 0px 10px;
     }
 
@@ -108,7 +115,7 @@
   </main>
 
   <footer>
-    <p>&copy; 2023 PycodeBR Multimarcas</p>
+    <p>&copy; 2024 AutoTchelo Multimarcas</p>
   </footer>
 </body>
 </html>

@@ -2,6 +2,10 @@
 
 {% block content %}
   <style>
+    main{
+      background-color: #2f2841;
+    }
+
     .car-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -69,41 +73,45 @@
         justify-content: center;
         align-items: center;
         text-align: center;
-        padding: 20px;
+        padding: 20px 20px 10px 20px;
     }
 
     input[type="text"] {
         padding: 10px;
-        font-size: 16px;
-        border: 2px solid #e3e1e1;
-        border-radius: 4px;
+        font-size: 13px;
+        border: 2px solid #ecedf2;;
+        border-radius: 8px;
         margin-right: 10px;
-        transition: border-bottom-color 0.3s ease-in-out;
+        width: 200px;
     }
 
     input[type="text"]:focus {
         outline: none;
-        border-bottom-color: #e3e1e1;
     }
 
     button[type="submit"] {
-        background-color: #0096c7;
+        background-color: #00ff88;
         color: #fff;
         border: none;
         padding: 10px 20px;
         font-size: 16px;
         border-radius: 4px;
         cursor: pointer;
-        transition: background-color 0.3s ease-in-out;
+        transition: background-color 0.2s ease-in-out;
     }
 
     button[type="submit"]:hover {
-        background-color: #0f6d8d;
+        background-color: #0b6b3e;
     }
+
+    footer{
+      padding: 1px;
+    }
+
   </style>
 
   <form method="GET" action="{% url 'cars_list' %}">
-    <input type="text" name="search" placeholder="Buscar carro...">
+    <input type="text" name="search" placeholder="Digite o modelo do carro...">
     <button type="submit">Buscar</button>
   </form>
 
