@@ -3,6 +3,7 @@
 {% block content %}
   <style>
     body{
+      height: 100%;
       background-color: #2f2841;
     }
 
@@ -34,7 +35,7 @@
     }
 
     .car-card p {
-      font-size: 1rem;
+      font-size: small;
       margin-bottom: 10px;
     }
 
@@ -86,8 +87,13 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      padding: 5px;
+      height: 40px;
     }
+
+    footer p{
+      padding: 0px;
+    }
+
   </style>
   <div class="car-card">
       <img src="{{ object.photo.url }}" alt="{{ object.model }} - {{ object.brand }}">
@@ -96,6 +102,9 @@
       <p><strong>Ano do modelo:</strong> {{ object.model_year }}</p>
       <p><strong>Placa:</strong> {{ object.plate }}</p>
       <p><strong>Preço:</strong> R$ {{ object.value }}</p>
+      {% if object.description %}
+      <p><strong>Descrição:</strong> {{ object.description }}</p>
+      {% endif %}
   </div>
   {% if user.is_authenticated %}
   <div class="buttons-container">

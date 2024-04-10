@@ -9,23 +9,23 @@ def car_inventory_update():
     CarInventory.objects.create(cars_count=total_cars_count, cars_value= sum_cars_value)
 
 
-@receiver(pre_save, sender=Car)
+@receiver(post_save, sender=Car)
 def car_pre_save(sender, instance, **kwargs):
     car_inventory_update()
 
 
-@receiver(pre_delete, sender=Car)
+@receiver(post_delete, sender=Car)
 def car_pre_delte(sender, instance, **kwargs):   
     car_inventory_update()
 
 
-'''
-@receiver(post_save, sender=Car)
+@receiver(pre_save, sender=Car)
 def car_post_save(sender, instance, **kwargs):
-    #print(instance.model, instance.brand)
+    if not instance.description:
+        instance.description = 'Bio gerada auto'
 
 
-@receiver(post_delete, sender=Car)
-def car_post_delete(sender, instance, **kwargs):   
-    pass
-'''
+#@receiver(pre_delete, sender=Car)
+#def car_post_delete(sender, instance, **kwargs):   
+#    print(instance.model, instance.brand)
+#    pass

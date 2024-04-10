@@ -16,11 +16,12 @@ class Car(models.Model):
     plate = models.CharField(max_length=10, blank=True, null=True)
     value= models.FloatField()
     photo = models.ImageField(upload_to='cars/')
-
+    description = models.TextField(max_length=1500, blank=True, null=True)
 
     def __str__(self):
         return self.model
     
+
 class CarInventory(models.Model):
     cars_count = models.IntegerField()
     cars_value = models.FloatField()
