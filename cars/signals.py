@@ -2,7 +2,7 @@ from django.db.models.signals import pre_save, pre_delete, post_delete, post_sav
 from django.dispatch import receiver
 from django.db.models import Sum
 from cars.models import Car, CarInventory
-from openai_api.client import get_car_ai_description
+from openai_api.client import get_car_ai_bio
 
 
 def car_inventory_update():
@@ -23,11 +23,15 @@ def car_post_delte(sender, instance, **kwargs):
 
 @receiver(pre_save, sender=Car)
 def car_pre_save(sender, instance, **kwargs):
+    '''
+    Função para gerar descrição com a api do oOpenIA (desativada pois a API é paga):
     if not instance.description:
-        ai_description = get_car_ai_description(
+        ai_description = get_car_ai_bio(
             instance.model, instance.brand, instance.model_year
         )
         instance.description = ai_description
+    '''
+    pass
 
 
 #@receiver(pre_delete, sender=Car)
