@@ -1,3 +1,4 @@
+from typing import Any
 from django import forms
 from cars.models import Car
 import datetime
@@ -19,6 +20,11 @@ class CarForm(forms.ModelForm):
     class Meta():
         model = Car
         fields = '__all__'
+
+    def clean_model(self):
+        model = str(self.cleaned_data.get('model'))
+        model = model.capitalize().strip()
+        return model
 
     def clean_value(self):
         value = self.cleaned_data.get('value')
