@@ -14,10 +14,12 @@
         --cor-button-CarCard: #333;
         --tamanho-font-primaria: 17px;
         --tamanho-font-secundaria: 12px;
+        --font-wheight-CarCard: 300;
     }
 
     body{
         font-family: "Poppins", sans-serif;
+        font-weight: 500;
         font-style: normal;
     }
 
@@ -49,10 +51,11 @@
       box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
       border-radius: 5px;
       overflow: hidden;
-      text-align: center;
       transition: all 0.3s ease;
+      text-align: left;
       min-width: 242px;
       max-width: 300px;
+      font-weight: var(--font-wheight-CarCard);
     }
 
 
@@ -95,13 +98,27 @@
         padding: 20px 20px 10px 20px;
     }
 
+    .input-icon{
+        position: relative;
+    }
+
+    .simbolo-pesquisar{
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-weight: 600;
+    }
+
     input[type="text"] {
         padding: 10px;
-        font-size: 13px;
-        border: 2px solid #ecedf2;;
+        padding-left: 40px;
+        font-size: 17px;
+        font-weight: bolder;
+        border: 1.5px solid #8d8d8d;;
         border-radius: 8px;
         margin-right: 10px;
-        width: 200px;
+        width: 300px;
     }
 
     input[type="text"]:focus {
@@ -127,6 +144,7 @@
         color: rgb(255, 255, 255);
         background-color: #00ff88;
         font-size: var(--tamanho-font-secundaria);
+        text-align: center;
 
         width: 140px;
         border-radius: 20px;
@@ -140,6 +158,7 @@
     }
 
     .car-card-model {
+        font-weight: var(--font-wheight-CarCard);
         font-size: 17px;
         color: var(--cor-primaria-CarCard);
         display: flex;
@@ -154,6 +173,7 @@
 
     .car-card-specs-value{
         color: #575757;
+        font-weight: var(--font-wheight-CarCard);
         font-size: var(--tamanho-font-primaria);
         display: flex;
         padding: 0px 16px;
@@ -203,8 +223,11 @@
   </style>
 
   <form method="GET" action="{% url 'cars_list' %}">
-    <input type="text" name="search" placeholder="Digite o modelo do carro...">
-    <button type="submit">Buscar</button>
+    <div class="input-icon">
+        <span class="material-symbols-outlined simbolo-pesquisar " >search</span>
+        <input type="text" name="search" placeholder="Digite o modelo do carro" >
+    </div>
+        <button type="submit">Buscar</button>
   </form>
 
 <div class="car-grid">
@@ -239,7 +262,7 @@
                         <h2 class="car-card-specs-value"> R$ {{car.value}} </h2>
                         <div class="car-card-specs-AnoKm">
                             <p> {{car.factory_year}}/{{car.model_year}}</p>
-                            <p> {{car.km}} </p>
+                            <p> {{car.km}} Km</p>
                         </div>
                     </div>
                     <div class="car-card-button">
