@@ -26,6 +26,7 @@ class CarForm(forms.ModelForm):
         model = model.capitalize().strip()
         return model
 
+
     def clean_value(self):
         value = self.cleaned_data.get('value')
 
@@ -54,4 +55,13 @@ class CarForm(forms.ModelForm):
             self.add_error('model_year', 'O modelo do carro é muito antigo para a nossa loja (acima de 1975)')
 
         return model_year
+    
+
+    def clean_km(self):
+        km = self.cleaned_data.get('km')
+
+        if km < 0:
+            self.add_error('km', 'A quilometragem do automóvel não pode ser menor que 0KM')
+        
+        return km
     
