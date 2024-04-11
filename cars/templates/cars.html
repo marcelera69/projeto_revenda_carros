@@ -219,7 +219,12 @@
         height: 36px;
     }
 
+    .no-results{
+        color: white;
+        padding-bottom: 5px;
+    }
 
+    
   </style>
 
   <form method="GET" action="{% url 'cars_list' %}">
@@ -230,8 +235,8 @@
         <button type="submit">Buscar</button>
   </form>
 
-<div class="car-grid">
-    {% if cars %}
+{% if cars %}
+    <div class="car-grid">
         {% for car in cars %}
         <a href=" {% url 'car_detail' car.pk %} ">
             <div class="car-card">
@@ -279,8 +284,10 @@
             </div>
         </a>   
         {% endfor %}
-    {% else %}
-        <p class="no-results">Nenhum carro encontrado.</p>
+        {% else %}
+    </div>
+    <div class="no-results">
+        <p> Nenhum carro encontrado...</p>
+    </div>
     {% endif %}
-</div>
 {% endblock %}

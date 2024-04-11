@@ -6,16 +6,15 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: 'Noto Sans', sans-serif;
     }
     
     body, html{
-        background-color: white;
+        background-color: #2f2841;
     }
     
     .menu-login{
         width: 100vw;
-        height: 82vh;
+        height: 86vh;
         
         display: flex;
         justify-content: center;
@@ -54,8 +53,9 @@
     }
     
     .cadastro{
-        width: 65%;
-        
+        width: 80%;
+        max-width: 500px;
+
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -74,7 +74,11 @@
     }
 
     .cadastro > form{
-        width: 100%;
+        width: 95%;
+    }
+
+    .form-group{
+        margin-bottom: 10px;
     }
 
     .campos-dados{
@@ -88,10 +92,10 @@
         width: 100%;
 
         padding: 16px 0px;
-        margin: 25px auto 15px auto;
+        margin: 35px auto 15px auto;
 
         border: none;
-        border-radius: 10px;
+        border-radius: 30px;
         box-shadow: 0px 7px 30px #00ff802a;
 
         color: #2b134b;
@@ -101,7 +105,11 @@
 
         cursor: pointer;
     }
-
+    
+    input:focus {
+        outline: none;
+    }
+    
     .cadastro > form > div{
         display: flex;
         flex-direction: column;
@@ -111,15 +119,25 @@
         color: #e4e4e4;
         margin: 5px 0px;
     }
-
+    
     .cadastro > form > div > input{
-        height: 25px;
+        height: 50px;
+        font-size: 20px;
         color: #f0ffffde;
         background-color: #2f2841;
         border: none;
-        border-radius: 7px;
+        border-radius: 30px;
         box-shadow: 0px 10px 20px #00000056;
-        padding: 7px;
+        padding: 7px 15px;
+        cursor: pointer;
+    }
+    
+    .sem-cadastro{
+        color: white;
+    }
+
+    .sem-cadastro > a{
+        color: #77ffc0;
     }
 
     footer{
@@ -129,9 +147,10 @@
         padding: 21px;
     }
 
-    @media screen and (max-width: 850px) {
+    @media screen and (max-width: 930px) {
         .menu-login{
             flex-direction: column;
+            height: 80vh;
         }
 
         .esquerda-login{
@@ -156,14 +175,19 @@
         }
     }
 
-    @media screen and (max-width: 680px) {
-        .esquerda-login > img{
-            width: 50%;
+    @media screen and (max-width: 500px){
+        .esquerda-login > h1, h2{
+            text-align: center;
+        }
+
+        .menu-login{
+            height: 75vh;
         }
     }
+    
 </style>
 
-<main class="menu-login">
+<div class="menu-login">
     <div class="esquerda-login">
         <h1>Faça o login </h1>
         <h2>E adiquira hoje o seu novo veículo</h2>
@@ -174,22 +198,24 @@
             <form method="POST" autocomplete="on">
                 {% csrf_token %}
 
-                
                 <div class="form-group">
                     {{ login_form.username.errors }}
-                    <label>Usuário: </label>
+                    <label>Usuário </label>
                     {{ login_form.username }}
                 </div>
 
                 <div class="form-group">
                     {{ login_form.password.errors }}
-                    <label>Senha: </label>
+                    <label>Senha </label>
                     {{ login_form.password }}
                 </div>
 
                 <input type="submit" value="LOGIN"></input>
+            </form>
+            <div class="sem-cadastro">
+                Não possui cadastro ? <a href=" {% url 'register' %} "> Cadastre-se aqui </a>
             </div>
-        </form>
+        </div>
     </div>
-</main>
+</div>
 {% endblock %}
