@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
   <title>{% block title %}{% endblock %}</title>
   
   <style>
@@ -48,6 +49,10 @@
         margin: 0px;
       }
       
+      li{
+        list-style: none;
+      }
+
       nav {
         display: flex;
         justify-content: space-between;
@@ -101,13 +106,13 @@
         background-color: #999;
     }
     
-    div.menu-navegacao{
+    div.botao-menu-navegacao{
       display: none;
       color: #77ffc0;
       padding: 0px 20px;
     }
     
-    div.menu-navegacao span{
+    div.botao-menu-navegacao span{
       font-size: 30px;
       cursor: pointer;
     }
@@ -118,29 +123,58 @@
       padding: 0px 10px;
     }
 
+    .menu_oculto{
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      background-color: #201b2c;
+      text-align: center;
+      z-index: 1;
+      width: 200px;
+      margin-left: -200px;
+    }
+
+    .menu_oculto .close-bottom{
+      text-align: end;
+      cursor: pointer;
+      color: #77ffc0;
+    }
+
+    .menu_oculto .close-bottom span{
+      padding: 5px;
+    }
+
     @media (max-width: 600px){
         .botoes-navegacao{
           display: none;
         }    
 
-        div.menu-navegacao{
+        div.botao-menu-navegacao{
           display: block;
         }
 
         div.bemvindo-user{
           font-size: small;
         }
-    } 
+      } 
+
+      @media (max-width: 400px){
+          footer p{
+            font-size: 12px;
+          }
+      }
 
   </style>
 </head>
 <body>
+
   <header>
     <nav>
-      <div class="menu-navegacao" onclick="clickMenu()" >
+      <div class="botao-menu-navegacao" onclick="openMenu()" >
         <span class="material-symbols-outlined">menu</span>
       </div>
-      <div class="botoes-navegacao" id="botoes">
+      <div class="botoes-navegacao">
         <ul>
           {% if not user.is_authenticated %}
             <li><a href="{% url 'register' %}">Cadastre-se</a></li>
@@ -162,25 +196,78 @@
       {% endif %}
     </nav>
   </header>
+
+  <div class="menu_oculto">
+    <div class="close-bottom">
+      <span class="material-symbols-outlined " onclick="closeMenu()">close</span>
+    </div>
+      <ul>
+      {% if not user.is_authenticated %}
+        <li><a href="{% url 'register' %}">Cadastre-se</a></li>
+        <li><a href="{% url 'login' %}">Login</a></li>
+      {% endif %}
+  
+      <li><a href="{% url 'cars_list' %}">Carros</a></li>
+
+      {% if user.is_authenticated %}
+          <li><a href="{% url 'new_car' %}">Cadastrar Carro</a></li>
+          <li><a href="{% url 'logout' %}">Sair</a></li>
+      {% endif %}
+    </ul>
+  </div>
+
   <main>
     {% block content %}
     {% endblock %}
   </main>
+
   <footer>
     <p>&copy; 2024 AutoTchelo Multimarcas</p>
   </footer>
 
   <script>
 
-    function clickMenu(){ 
-        if (botoes.style.display == 'block'){
-          botoes.style.display = 'none'
-        } else{
-          botoes.style.display = 'block'
-        }
-    }
+    controle_button_openMenu = false
 
+    function openMenu(){ 
+      var target = document.querySelector('.menu_oculto')
+
+      if (controle_button_openMenu == false){
+        controle_button_openMenu = true
+
+        var player = target.animate([
+              {transform: 'translate(0,0)'},
+              {transform: 'translate(200px,0)'}
+          ],200)
+  
+          player.addEventListener('finish', function(){
+              target.style.transform = 'translate(200px,0)'
+          })
+      }
+    }
+    
+    
+    function closeMenu(){
+      controle_button_openMenu = false
+      var target = document.querySelector('.menu_oculto');
+      
+      var player = target.animate([
+            {transform: 'translate(132px,0)'},
+            {transform: 'translate(0,0)'}
+        ],200)
+  
+        player.addEventListener('finish', function(){
+            target.style.transform = 'translate(0,0)'
+        })
+      }
+        
   </script>
 
 </body>
 </html>
+
+
+
+
+
+
