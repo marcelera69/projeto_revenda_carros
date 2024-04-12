@@ -9,9 +9,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
   <title>{% block title %}{% endblock %}</title>
   
   <style>
+
+    *{
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+      font-weight: 500;
+      font-style: normal;
+    }
 
     body {
         font-family: 'Poppins', sans-serif;
@@ -35,6 +45,7 @@
 
       footer > p{
         padding: 10px;
+        margin: 0px;
       }
       
       nav {
@@ -60,19 +71,25 @@
     nav ul li {
       margin: 2px;
       padding: 0px;
+      padding: 16px 10px;
+      transition: all 0.1s ease;
+      border-bottom: 2px solid #201b2c ;
+    }
+
+    nav ul li:hover{
+      border-bottom: 2px solid #00ff88 ;
     }
 
     nav ul li a {
         color: #77ffc0;
         text-decoration: none;
         font-size: 16px;
-        transition: all 0.3s ease;
         border-radius: 2px;
-        padding: 16px 10px;
-    }
-
+        display: block;
+        transition: all 0.3s ease;
+      }
+      
     nav ul li a:hover {
-        background-color: #00ff88;
         color: white;
     }
 
@@ -84,31 +101,60 @@
         background-color: #999;
     }
     
+    div.menu-navegacao{
+      display: none;
+      color: #77ffc0;
+      padding: 0px 20px;
+    }
+    
+    div.menu-navegacao span{
+      font-size: 30px;
+      cursor: pointer;
+    }
+
     div.bemvindo-user{
       font-size: medium;
       color: #77ffc0;
       padding: 0px 10px;
     }
 
+    @media (max-width: 600px){
+        .botoes-navegacao{
+          display: none;
+        }    
+
+        div.menu-navegacao{
+          display: block;
+        }
+
+        div.bemvindo-user{
+          font-size: small;
+        }
+    } 
+
   </style>
 </head>
 <body>
   <header>
     <nav>
-      <ul>
-        {% if not user.is_authenticated %}
-          <li><a href="{% url 'register' %}">Cadastre-se</a></li>
-          <li><a href="{% url 'login' %}">Login</a></li>
-        {% endif %}
-        
-        <li><a href="{% url 'cars_list' %}">Carros</a></li>
-
-        {% if user.is_authenticated %}
-          <li><a href="{% url 'new_car' %}">Cadastrar Carro</a></li>
-          <li><a href="{% url 'logout' %}">Sair</a></li>
-        {% endif %}
-
-      </ul>
+      <div class="menu-navegacao" onclick="clickMenu()" >
+        <span class="material-symbols-outlined">menu</span>
+      </div>
+      <div class="botoes-navegacao" id="botoes">
+        <ul>
+          {% if not user.is_authenticated %}
+            <li><a href="{% url 'register' %}">Cadastre-se</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+          {% endif %}
+          
+          <li><a href="{% url 'cars_list' %}">Carros</a></li>
+  
+          {% if user.is_authenticated %}
+            <li><a href="{% url 'new_car' %}">Cadastrar Carro</a></li>
+            <li><a href="{% url 'logout' %}">Sair</a></li>
+          {% endif %}
+        </ul>
+      </div>
       {% if user.is_authenticated %}
       <div class="bemvindo-user">
         <p>Seja bem-vindo, {{user.username}}</p>
@@ -123,5 +169,18 @@
   <footer>
     <p>&copy; 2024 AutoTchelo Multimarcas</p>
   </footer>
+
+  <script>
+
+    function clickMenu(){ 
+        if (botoes.style.display == 'block'){
+          botoes.style.display = 'none'
+        } else{
+          botoes.style.display = 'block'
+        }
+    }
+
+  </script>
+
 </body>
 </html>
