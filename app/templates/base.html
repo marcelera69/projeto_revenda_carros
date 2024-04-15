@@ -197,6 +197,7 @@
 
     .menu-oculto main{
       height: calc(100vh - 96px - 64px);
+      background-color: #2f2841;
     }
 
     .menu-oculto main h2{
@@ -309,7 +310,7 @@
           {% if user.is_authenticated %}
           <p> {{user.username}} </p>
           {% else %}
-          <a href=" {% url 'login' %} "> Login </a>
+          <a href=" {% url 'login' %} "> Entrar </a>
           {% endif %}
         </div>
         {% if user.is_authenticated %}
