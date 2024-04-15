@@ -184,8 +184,18 @@
       align-items: center;
       background-color: #201b2c;
       font-size: small;
-      padding: 24px;
+      padding: 0px 24px;
       height: 96px;
+    }
+
+    .menu-oculto .logo{
+      display: flex;
+      text-align: center;
+    }
+
+    .menu-oculto .logo h2{
+      display: flex;
+      align-items: center;
     }
 
     .menu-oculto header span{
@@ -326,11 +336,14 @@
 
   <section class="menu-oculto">
     <header>
-      {% if user.is_authenticated %}
-      <h2>Olá, {{user.username}} </h2>
-      {% else %}
-      <h2> <a href="{% url 'login' %}"> Entrar ou Cadastre-se </a></h2>
-      {% endif %}
+      <div class="logo">
+        <img src="../../media/src/download.svg" alt="Logo img" width="80" height="80">
+        {% if user.is_authenticated %}
+        <h2>Olá, {{user.username}} </h2>
+        {% else %}
+        <h2> <a href="{% url 'login' %}"> Entrar ou Cadastre-se </a></h2>
+        {% endif %}
+      </div>
       <div class="close-menu">
         <span class="material-symbols-outlined" onclick=closeMenu()>close</span>
       </div>
