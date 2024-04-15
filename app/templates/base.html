@@ -11,6 +11,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
   <title>{% block title %}{% endblock %}</title>
   
   <style>
@@ -57,7 +61,8 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        
+        padding: 0px 40px;
+
         background-color: #201b2c;
         color: #fff;
         height: 60px;
@@ -88,11 +93,11 @@
     nav ul li a {
         color: #77ffc0;
         text-decoration: none;
-        font-size: 16px;
+        font-size: 15px;
         border-radius: 2px;
         display: block;
         transition: all 0.3s ease;
-      }
+    }
       
     nav ul li a:hover {
         color: white;
@@ -106,115 +111,256 @@
         background-color: #999;
     }
     
-    div.botao-menu-navegacao{
-      display: none;
+    .logomarca{
       color: #77ffc0;
-      padding: 0px 20px;
+      font-size: 19px;
+      font-weight: 600;
+    }
+
+    .botoes-navegacao a{
+      font-weight: 300;
+    }
+
+    .bemvindo-user{
+      display: flex;
+      align-items: center;
+      height: 100%;
+      gap: 17px;
+      color: #77ffc0;
+      padding-left: 20px;
+      border-left: 1.5px solid #77ffc065;
+    }
+
+    .bemvindo-user p{
+      font-weight: 300;
+      font-size: 14px;
+      cursor: pointer;
     }
     
-    div.botao-menu-navegacao span{
-      font-size: 30px;
+    .bemvindo-user span{
+      cursor: pointer;
+      font-size: 24px;
+    }
+
+    .botao-menu-navegacao{
+      display: none;
+      color: #77ffc0;
+    }
+    
+    .botao-menu-navegacao span{
+      font-size: 24px;
       cursor: pointer;
     }
 
-    div.bemvindo-user{
-      font-size: medium;
-      color: #77ffc0;
-      padding: 0px 10px;
-    }
-
-    .menu_oculto{
+    .username{
       display: flex;
-      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .menu-oculto{
+      margin-left: -100vw;
+      width: 100%;
       position: absolute;
-      top: 60px;
-      background-color: #201b2c;
-      text-align: center;
+      top: 0;
+      left: 0;
       z-index: 1;
-      width: 200px;
-      margin-left: -200px;
     }
 
-    .menu_oculto .close-bottom{
-      text-align: end;
-      cursor: pointer;
-      color: #77ffc0;
+    .menu-oculto a{
+      color: white;
+      text-decoration: none;
     }
 
-    .menu_oculto .close-bottom span{
-      padding: 5px;
+    .menu-oculto header{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #201b2c;
+      font-size: small;
+      padding: 24px;
+      height: 96px;
     }
 
-    @media (max-width: 600px){
+    .menu-oculto header span{
+      position: absolute;
+      right: 1.5rem;
+      top: 1.25rem;
+    }
+
+    .menu-oculto main{
+      height: calc(100vh - 96px - 64px);
+    }
+
+    .menu-oculto main h2{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      height: 64px;
+    }
+
+    .menu-oculto main li{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0px 20px;
+      height: 56px;
+    }
+
+    .menu-oculto footer{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-size: 18px;
+
+      height: 64px;
+    }
+
+    .menu-oculto footer a{
+      text-decoration: none;
+    }
+
+    @media only screen and  (max-width: 850px){
         .botoes-navegacao{
           display: none;
         }    
 
-        div.botao-menu-navegacao{
+        .botao-menu-navegacao{
           display: block;
         }
 
-        div.bemvindo-user{
+        .bemvindo-user{
           font-size: small;
         }
-      } 
 
-      @media (max-width: 400px){
+        .username{
+          display: none;
+        }
+
+      } 
+      
+      @media only screen and (min-width: 600px) {
+        .menu-oculto{
+          display: none;
+        }
+      }
+
+      @media only screen and  (max-width: 490px){
+        nav{
+          padding: 0px 30px;
+        }
+
+          .logomarca{
+            font-size: 15px;
+          }
+
           footer p{
             font-size: 12px;
           }
       }
 
+      @media only screen and  (max-width: 380px){
+        nav{
+          padding: 0px 20px;
+        }
+
+        .logomarca{
+            font-size: 12px;
+        }
+      }
+
   </style>
 </head>
-<body>
 
+<body>
   <header>
     <nav>
-      <div class="botao-menu-navegacao" onclick="openMenu()" >
-        <span class="material-symbols-outlined">menu</span>
-      </div>
+      <div class="logomarca">Autotchelo Multimarcas</div>
       <div class="botoes-navegacao">
         <ul>
           {% if not user.is_authenticated %}
             <li><a href="{% url 'register' %}">Cadastre-se</a></li>
+
             <li><a href="{% url 'login' %}">Login</a></li>
           {% endif %}
           
           <li><a href="{% url 'cars_list' %}">Carros</a></li>
-  
+
           {% if user.is_authenticated %}
             <li><a href="{% url 'new_car' %}">Cadastrar Carro</a></li>
+
             <li><a href="{% url 'logout' %}">Sair</a></li>
+
           {% endif %}
         </ul>
       </div>
       {% if user.is_authenticated %}
       <div class="bemvindo-user">
-        <p>Seja bem-vindo, {{user.username}}</p>
+        <div class="username">
+          <span class="material-symbols-outlined">account_circle</span>
+          <p> {{user.username}} </p>
+        </div>
+        <span class="material-symbols-outlined">favorite</span>
+        <span class="material-symbols-outlined">forum</span>
+        <div class="botao-menu-navegacao" onclick="openMenu()" >
+          <span class="material-symbols-outlined">menu</span>
+        </div>
       </div>
       {% endif %}
     </nav>
   </header>
 
-  <div class="menu_oculto">
-    <div class="close-bottom">
-      <span class="material-symbols-outlined " onclick="closeMenu()">close</span>
-    </div>
+  <section class="menu-oculto">
+    <header>
+      <h2>Olá, {{user.username}} </h2>
+      <div class="close-menu">
+        <span class="material-symbols-outlined" onclick=closeMenu()>close</span>
+      </div>
+    </header>
+    <main>
+      <h2> Menu </h2>
       <ul>
-      {% if not user.is_authenticated %}
-        <li><a href="{% url 'register' %}">Cadastre-se</a></li>
-        <li><a href="{% url 'login' %}">Login</a></li>
-      {% endif %}
+        {% if not user.is_authenticated %}
+          <li>
+            <a href="{% url 'register' %}">Cadastre-se</a>
+            <span class="material-symbols-outlined">expand_more</span>
+          </li>
+          <hr>
+          <li>
+            <a href="{% url 'login' %}">Login</a>
+            <span class="material-symbols-outlined">expand_more</span>
+          </li>
+          <hr>
+        {% endif %}
+    
+        <li>
+          <a href="{% url 'cars_list' %}">Carros</a>
+          <span class="material-symbols-outlined">expand_more</span>
+        </li>
+        <hr>
   
-      <li><a href="{% url 'cars_list' %}">Carros</a></li>
-
-      {% if user.is_authenticated %}
-          <li><a href="{% url 'new_car' %}">Cadastrar Carro</a></li>
-          <li><a href="{% url 'logout' %}">Sair</a></li>
-      {% endif %}
-    </ul>
-  </div>
+        {% if user.is_authenticated %}
+            <li>
+              <a href="{% url 'new_car' %}">Cadastrar Carro</a>
+              <span class="material-symbols-outlined">expand_more</span>
+            </li>
+            <hr>
+            <li>
+              <a href="{% url 'logout' %}">Sair</a>
+              <span class="material-symbols-outlined">expand_more</span>
+            </li>
+            <hr>
+        {% endif %}
+      </ul>
+    </main>
+    <footer>
+      <div>
+        <a href=" {% url 'logout' %} "> Sair </a>
+      </div>
+    </footer>
+  </section>
 
   <main>
     {% block content %}
@@ -226,35 +372,28 @@
   </footer>
 
   <script>
-
-    controle_button_openMenu = false
-
     function openMenu(){ 
-      var target = document.querySelector('.menu_oculto')
-
-      if (controle_button_openMenu == false){
-        controle_button_openMenu = true
-
-        var player = target.animate([
-              {transform: 'translate(0,0)'},
-              {transform: 'translate(200px,0)'}
-          ],200)
+      var target = document.querySelector('.menu-oculto')
+    
+      var player = target.animate([
+            {transform: 'translate(0,0)'},
+            {transform: 'translate(100vw,0)'}
+        ],175)
   
-          player.addEventListener('finish', function(){
-              target.style.transform = 'translate(200px,0)'
-          })
-      }
+        player.addEventListener('finish', function(){
+            target.style.transform = 'translate(100vw,0)'
+        })
+      
     }
     
     
     function closeMenu(){
-      controle_button_openMenu = false
-      var target = document.querySelector('.menu_oculto');
+      var target = document.querySelector('.menu-oculto');
       
       var player = target.animate([
-            {transform: 'translate(132px,0)'},
+            {transform: 'translate(100vw,0)'},
             {transform: 'translate(0,0)'}
-        ],200)
+        ],175)
   
         player.addEventListener('finish', function(){
             target.style.transform = 'translate(0,0)'
