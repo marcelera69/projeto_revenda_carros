@@ -16,7 +16,7 @@ class Car(models.Model):
     km = models.IntegerField()
     value= models.FloatField()
     photo = models.ImageField(upload_to='cars/')
-    description = models.TextField(max_length=1500, blank=True, null=True)
+    description = models.TextField(max_length=50, blank=True, null=True)
 
     def __str__(self):
         return self.model

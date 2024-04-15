@@ -3,7 +3,8 @@
 {% block content %}
   <style>
     :root{
-        --cor-primaria-CarCard:rgb(255, 255, 255);
+        --cor-primaria-CarCard:#ffffff;
+        --cor-primaria-sistema: #00ff88;
         --cor-secundaria-CarCard: #77ffc0;
         --cor-button-CarCard: #333;
         --tamanho-font-primaria: 17px;
@@ -111,6 +112,10 @@
         background-color: #108eb8;
     }
 
+    .car-card-specs{
+        min-height: 255px;
+    }
+
     .car-card-oferta{
         color: rgb(255, 255, 255);
         background-color: #00ff88;
@@ -140,6 +145,7 @@
     .car-card-descricao{
         font-size: var(--tamanho-font-secundaria);
         color: var(--cor-secundaria-CarCard);
+        height: 36px;
     }
 
     .car-card-specs-value{
@@ -185,10 +191,27 @@
 
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
 
         padding: 0px 16px;
         height: 36px;
+        cursor: auto;
+    }
+
+    .car-card-specs-regiao span{
+        color: var(--cor-secundaria-CarCard);
+        font-size: 15px;
+        cursor: pointer;
+    }
+
+    .car-card-specs-regiao div{
+        display: flex;
+        gap: 3px;
+    }
+
+    .car-card-specs-regiao p{
+        display: flex;
+        align-items: center;
     }
 
     .no-results{
@@ -257,51 +280,48 @@
 {% if cars %}
     <div class="car-grid">
         {% for car in cars %}
-        <a href=" {% url 'car_detail' car.pk %} ">
             <div class="car-card">
-                <div class="car-card-img">
-                    <img src="{{ car.photo.url }}" alt="{{ car.model }} - {{ car.brand }}">
-                </div>
+                <a href=" {% url 'car_detail' car.pk %} "> 
+                    <div class="car-card-img">
+                        <img src="{{ car.photo.url }}" alt="{{ car.model }} - {{ car.brand }}">
+                    </div>
+                </a>
                 <div class="car-card-specs">
-                    <div>
-                        <div class="car-card-oferta">
-                            Oferta destaque
+                    <a href=" {% url 'car_detail' car.pk %} ">
+                        <div>
+                            <div class="car-card-oferta">
+                                Oferta destaque
+                            </div>
+                            <div class="car-card-specs-principal">
+                                <div>
+                                    <h2 class="car-card-model"> {{ car.brand }} {{ car.model }}</h2>
+                                </div>
+                                <div class="car-card-descricao">
+                                    <p>{{car.description}}</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="car-card-specs-principal">
+                        <div >
+                            <h2 class="car-card-specs-value"> R$ {{car.value}} </h2>
+                            <div class="car-card-specs-AnoKm">
+                                <p> {{car.factory_year}}/{{car.model_year}}</p>
+                                <p> {{car.km}} Km</p>
+                            </div>
+                        </div>
+                        <div class="car-card-button">
+                            Visualizar veiculo
+                        </div>
+                        <hr>
+                    </a>
+                        <div class="car-card-specs-regiao">
                             <div>
-                                <h2 class="car-card-model"> {{ car.brand }} {{ car.model }}</h2>
+                                <a href="https://www.google.com.br/maps/place/Campos+dos+Goytacazes,+RJ" target="_blank"> <span class="material-symbols-outlined">location_on</span> </a>
+                                <p>Campos dos goytacazes - RJ</p>
                             </div>
-                            {% if car.description %}
-                            <div class="car-card-descricao">
-                                <p>{{car.description}}</p>
-                            </div>
-                            {% else %}
-                            <div class="car-card-descricao">
-                                <p> Automóvel ainda sem descrição </p>
-                            </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                    <div >
-                        <h2 class="car-card-specs-value"> R$ {{car.value}} </h2>
-                        <div class="car-card-specs-AnoKm">
-                            <p> {{car.factory_year}}/{{car.model_year}}</p>
-                            <p> {{car.km}} Km</p>
-                        </div>
-                    </div>
-                    <div class="car-card-button">
-                        Visualizar veiculo
-                    </div>
-                    <hr>
-                    <div class="car-card-specs-regiao">
-                        <span class="material-symbols-outlined">
-                            location_on
-                        </span>
-                        Campos dos goytacazes - RJ
+                            <a href="#"> <span class="material-symbols-outlined">favorite</span> </a>
                     </div>
                 </div>
             </div>
-        </a>   
         {% endfor %}
         {% else %}
     </div>

@@ -23,6 +23,8 @@ def car_post_delte(sender, instance, **kwargs):
 
 @receiver(pre_save, sender=Car)
 def car_pre_save(sender, instance, **kwargs):
+    if not instance.description:
+        instance.description = 'Automóvel ainda sem descrição \n Adicione sobre'
     '''
     Função para gerar descrição com a api do oOpenIA (desativada pois a API é paga):
     if not instance.description:
@@ -31,7 +33,6 @@ def car_pre_save(sender, instance, **kwargs):
         )
         instance.description = ai_description
     '''
-    pass
 
 
 #@receiver(pre_delete, sender=Car)
