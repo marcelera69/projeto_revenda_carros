@@ -222,7 +222,7 @@
       text-decoration: none;
     }
 
-    @media only screen and  (max-width: 850px){
+    @media only screen and (max-width: 850px){
         .botoes-navegacao{
           display: none;
         }    
@@ -234,14 +234,14 @@
         .bemvindo-user{
           font-size: small;
         }
-
+        
         .username{
           display: none;
         }
-
+        
       } 
       
-      @media only screen and (min-width: 600px) {
+      @media only screen and (min-width: 851px){
         .menu-oculto{
           display: none;
         }
@@ -374,6 +374,7 @@
   <script>
     function openMenu(){ 
       var target = document.querySelector('.menu-oculto')
+      console.log(target)
     
       var player = target.animate([
             {transform: 'translate(0,0)'},
