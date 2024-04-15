@@ -36,6 +36,12 @@
         padding: 0;
     }
 
+    a{
+      list-style: none;
+      text-decoration: none;
+      color: #77ffc0;
+    }
+
     header {
         background-color: #0096c7;
         color: #fff;
@@ -186,6 +192,7 @@
       position: absolute;
       right: 1.5rem;
       top: 1.25rem;
+      cursor: pointer;
     }
 
     .menu-oculto main{
@@ -296,25 +303,33 @@
           {% endif %}
         </ul>
       </div>
-      {% if user.is_authenticated %}
       <div class="bemvindo-user">
         <div class="username">
           <span class="material-symbols-outlined">account_circle</span>
+          {% if user.is_authenticated %}
           <p> {{user.username}} </p>
+          {% else %}
+          <a href=" {% url 'login' %} "> Login </a>
+          {% endif %}
         </div>
+        {% if user.is_authenticated %}
         <span class="material-symbols-outlined">favorite</span>
+        {% endif %}
         <span class="material-symbols-outlined">forum</span>
         <div class="botao-menu-navegacao" onclick="openMenu()" >
           <span class="material-symbols-outlined">menu</span>
         </div>
       </div>
-      {% endif %}
     </nav>
   </header>
 
   <section class="menu-oculto">
     <header>
+      {% if user.is_authenticated %}
       <h2>Olá, {{user.username}} </h2>
+      {% else %}
+      <h2> <a href="{% url 'login' %}"> Entrar ou Cadastre-se </a></h2>
+      {% endif %}
       <div class="close-menu">
         <span class="material-symbols-outlined" onclick=closeMenu()>close</span>
       </div>
