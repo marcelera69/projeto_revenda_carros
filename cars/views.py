@@ -1,9 +1,13 @@
 from cars.models import Car
 from cars.forms import CarForm
 from django.urls import reverse_lazy
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
+
+
+def is_superuser(user):
+    return user.is_superuser
 
 
 class CarListView(ListView):
@@ -21,11 +25,9 @@ class CarListView(ListView):
         return cars
 
 
-
 class CarDetailView(DetailView):
     model = Car
     template_name = 'car_detail.html'
-
 
 
 @method_decorator(login_required(login_url='login'), name='dispatch')

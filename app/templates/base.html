@@ -240,7 +240,7 @@
       text-decoration: none;
     }
 
-    @media only screen and (max-width: 850px){
+    @media only screen and (max-width: 950px){
         .botoes-navegacao{
           display: none;
         }    
@@ -259,7 +259,7 @@
         
       } 
       
-      @media only screen and (min-width: 851px){
+      @media only screen and (min-width: 951px){
         .menu-oculto{
           display: none;
         }
@@ -308,7 +308,9 @@
 
           {% if user.is_authenticated %}
             <li><a href="{% url 'new_car' %}">Cadastrar Carro</a></li>
-
+            {% if user.is_superuser %}
+              <li><a href=" {% url 'admin:index' %} ">Adiministração</a></li>
+            {% endif %}
             <li><a href="{% url 'logout' %}">Sair</a></li>
 
           {% endif %}
@@ -376,6 +378,13 @@
               <span class="material-symbols-outlined">expand_more</span>
             </li>
             <hr>
+            {% if user.is_superuser %}
+              <li>
+                <a href=" {% url 'admin:index' %} ">Adiministração</a>
+                <span class="material-symbols-outlined">expand_more</span>
+              </li>
+              <hr>
+            {% endif %}
             <li>
               <a href="{% url 'logout' %}">Sair</a>
               <span class="material-symbols-outlined">expand_more</span>
