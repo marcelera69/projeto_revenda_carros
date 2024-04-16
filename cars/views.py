@@ -1,8 +1,9 @@
-from cars.models import Car
+from cars.models import Car, CarWish
 from cars.forms import CarForm
 from django.urls import reverse_lazy
-from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
 
@@ -30,17 +31,17 @@ class CarDetailView(DetailView):
     template_name = 'car_detail.html'
 
 
-@method_decorator(login_required(login_url='login'), name='dispatch')
-class NewCarView(CreateView):
+class NewCarView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Car
     form_class = CarForm
     template_name = 'new_car.html'
     success_url = '/'
 
+    def test_func(self):
+        return is_superuser(self.request.user)
 
 
-@method_decorator(login_required(login_url='login'), name='dispatch')
-class CarUpdateView(UpdateView):
+class CarUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Car
     form_class = CarForm
     template_name = 'car_update.html'
@@ -48,12 +49,16 @@ class CarUpdateView(UpdateView):
     def get_success_url(self):
         return reverse_lazy('car_detail', kwargs={'pk': self.object.pk})
     
+    def test_func(self):
+        return is_superuser(self.request.user)
+    
 
 
-@method_decorator(login_required(login_url='login'), name='dispatch')
-class CarDeleteView(DeleteView):
+class CarDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Car
     template_name = 'car_delete.html'
     success_url = '/'
 
+    def test_func(self):
+        return is_superuser(self.request.user)
 
