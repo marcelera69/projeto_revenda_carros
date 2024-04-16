@@ -36,6 +36,10 @@
         padding: 0;
     }
 
+    main{
+      background-color: #2f2841;
+    }
+
     a{
       list-style: none;
       text-decoration: none;
@@ -328,9 +332,9 @@
           {% endif %}
         </div>
         {% if user.is_authenticated %}
-        <span class="material-symbols-outlined">favorite</span>
+        <a href=" {% url 'cars_wish' %} "><span class="material-symbols-outlined">favorite</span></a>
         {% endif %}
-        <span class="material-symbols-outlined">forum</span>
+        <a href="#"><span class="material-symbols-outlined">forum</span></a>
         <div class="botao-menu-navegacao" onclick="openMenu()" >
           <span class="material-symbols-outlined">menu</span>
         </div>

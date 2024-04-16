@@ -1,3 +1,4 @@
+from django.db.models.query import QuerySet
 from cars.models import Car, CarWish
 from cars.forms import CarForm
 from django.urls import reverse_lazy
@@ -26,9 +27,18 @@ class CarListView(ListView):
         return cars
 
 
+
 class CarDetailView(DetailView):
     model = Car
     template_name = 'car_detail.html'
+
+
+
+class CarWishListView(LoginRequiredMixin, ListView):
+    model = CarWish
+    template_name = 'cars_wish.html'
+    context_object_name = 'wish_list'
+
 
 
 class NewCarView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
@@ -39,6 +49,7 @@ class NewCarView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
 
     def test_func(self):
         return is_superuser(self.request.user)
+
 
 
 class CarUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
