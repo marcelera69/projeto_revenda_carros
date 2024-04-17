@@ -13,6 +13,7 @@
     }
 
     body{
+        background-color: #2f2841;
         min-width: 340px;
     }
 
@@ -21,33 +22,44 @@
       min-height: calc(100vh - 60px - 45px);
     }
 
+    .hidden{
+        opacity: 0;
+        filter: blur(15px);
+        transform: translateY(100%);
+        transition: all 0.2s;
+    }
+    
+    .show{
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+    }
+
     .car-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       gap: 20px;
       margin: 0 auto;
       max-width: 1350px;
-      padding: 20px 20px 40px 20px;
+      padding: 20px 20px 80px 20px;
     }
 
     .car-grid a{
       text-decoration: none;
       color: #333;
-      font-size: 17px;
     }
 
     .car-card {
       background-color: #201b2c;
       box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
-      border-radius: 5px;
+      border-radius: 12px;
       overflow: hidden;
       transition: all 0.3s ease;
       text-align: left;
-      min-width: 140px;
-      max-width: max-content;
+      min-width: 160px;
+      max-width: 300px;
       font-weight: var(--font-wheight-CarCard);
     }
-
 
     .car-card:hover {
         cursor: pointer;
@@ -264,7 +276,9 @@
         button[type="submit"] {
             font-size: 10px;
         }
+
     }
+    
     
 
   </style>
@@ -280,7 +294,7 @@
 {% if cars %}
     <div class="car-grid">
         {% for car in cars %}
-            <div class="car-card">
+            <div class="car-card hidden">
                 <a href=" {% url 'car_detail' car.pk %} "> 
                     <div class="car-card-img">
                         <img src="{{ car.photo.url }}" alt="{{ car.model }} - {{ car.brand }}">
@@ -329,4 +343,19 @@
         <p> Nenhum carro encontrado...</p>
     </div>
     {% endif %}
+
+    <script>
+        const myObserver = new IntersectionObserver( (entries) => {
+            entries.forEach( (entry) =>{
+                if(entry.isIntersecting){
+                    entry.target.classList.add('show')
+                } else{
+                    entry.target.classList.remove('show')
+                }
+            })
+        } )
+
+        const elements = document.querySelectorAll('.hidden')
+        elements.forEach( (element) => myObserver.observe(element))
+    </script>
 {% endblock %}

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="../../media/src/Iconshow-Transport-Sportscar-car.32.png" type="image/x-icon">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-  <title>{% block title %}{% endblock %}</title>
+  <title> Sistema de gestão </title>
   
   <style>
 
@@ -299,7 +299,7 @@
 <body>
   <header>
     <nav>
-      <div class="logomarca">Autotchelo Multimarcas</div>
+      <div class="logomarca"> <a href=" {% url 'cars_list' %} "> Autotchelo Multimarcas </a> </div>
       <div class="botoes-navegacao">
         <ul>
           {% if not user.is_authenticated %}
@@ -427,10 +427,8 @@
   
         player.addEventListener('finish', function(){
             target.style.transform = 'translate(100vw,0)'
-        })
-      
+        }) 
     }
-    
     
     function closeMenu(){
       var target = document.querySelector('.menu-oculto');
@@ -444,7 +442,6 @@
             target.style.transform = 'translate(0,0)'
         })
       }
-        
   </script>
 
 </body>
