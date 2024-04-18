@@ -315,7 +315,7 @@
               <li><a href="{% url 'new_car' %}">Cadastrar Carro</a></li>
               <li><a href=" {% url 'admin:index' %} ">Adiministração</a></li>
             {% else %}
-              <li> <a href="#"> Meus carros </a></li>
+              <li> <a href="{% url 'cars_wish' %}"> Meus carros </a></li>
             {% endif %}
             <li><a href="{% url 'logout' %}">Sair</a></li>
 
