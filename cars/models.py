@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Brand(models.Model):
     id = models.AutoField(primary_key=True)
@@ -32,3 +33,8 @@ class CarInventory(models.Model):
 
     def __str__(self):
         return f'{self.cars_count} - {self.cars_value}  at:{self.created_At}'
+    
+
+class CarWish(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    cars = models.ManyToManyField(Car)

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="../../media/src/Iconshow-Transport-Sportscar-car.32.png" type="image/x-icon">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-  <title>{% block title %}{% endblock %}</title>
+  <title> Sistema de gestão </title>
   
   <style>
 
@@ -34,6 +34,10 @@
         color: #201b2c;
         margin: 0;
         padding: 0;
+    }
+
+    main{
+      background-color: #2f2841;
     }
 
     a{
@@ -295,7 +299,7 @@
 <body>
   <header>
     <nav>
-      <div class="logomarca"> <a href="{% url 'cars_list' %}">Autotchelo Multimarcas</a></div>
+      <div class="logomarca"> <a href=" {% url 'cars_list' %} "> Autotchelo Multimarcas </a> </div>
       <div class="botoes-navegacao">
         <ul>
           {% if not user.is_authenticated %}
@@ -307,9 +311,11 @@
           <li><a href="{% url 'cars_list' %}">Carros</a></li>
 
           {% if user.is_authenticated %}
-            <li><a href="{% url 'new_car' %}">Cadastrar Carro</a></li>
             {% if user.is_superuser %}
+              <li><a href="{% url 'new_car' %}">Cadastrar Carro</a></li>
               <li><a href=" {% url 'admin:index' %} ">Adiministração</a></li>
+            {% else %}
+              <li> <a href="{% url 'cars_wish' %}"> Meus carros </a></li>
             {% endif %}
             <li><a href="{% url 'logout' %}">Sair</a></li>
 
@@ -326,9 +332,9 @@
           {% endif %}
         </div>
         {% if user.is_authenticated %}
-        <span class="material-symbols-outlined">favorite</span>
+        <a href=" {% url 'cars_wish' %} "><span class="material-symbols-outlined">favorite</span></a>
         {% endif %}
-        <span class="material-symbols-outlined">forum</span>
+        <a href="#"><span class="material-symbols-outlined">forum</span></a>
         <div class="botao-menu-navegacao" onclick="openMenu()" >
           <span class="material-symbols-outlined">menu</span>
         </div>
@@ -421,10 +427,8 @@
   
         player.addEventListener('finish', function(){
             target.style.transform = 'translate(100vw,0)'
-        })
-      
+        }) 
     }
-    
     
     function closeMenu(){
       var target = document.querySelector('.menu-oculto');
@@ -438,7 +442,6 @@
             target.style.transform = 'translate(0,0)'
         })
       }
-        
   </script>
 
 </body>
