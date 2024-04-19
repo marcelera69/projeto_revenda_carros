@@ -45,7 +45,7 @@ class NewCarView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Car
     form_class = CarForm
     template_name = 'new_car.html'
-    success_url = '/'
+    success_url = 'cars/'
 
     def test_func(self):
         return is_superuser(self.request.user)
@@ -68,7 +68,7 @@ class CarUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 class CarDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Car
     template_name = 'car_delete.html'
-    success_url = '/'
+    success_url = 'cars/'
 
     def test_func(self):
         return is_superuser(self.request.user)
