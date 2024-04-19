@@ -2,59 +2,166 @@
 
 {% block content %}
 
-<style>
-    *{
-        font-family: Arial, Helvetica, sans-serif;
-        margin: 0px;
-        padding: 0px;
-        box-sizing: border-box;
-    }
+    <style>
+        body{
+            background-color: #2f2841;
+            height: 100vh;
+            min-height: 700px;
+        }
 
-    form{
+        main{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 60px - 45px);
+        }
+
+    .cadastro{
+        width: 80%;
+        max-width: 500px;
+
         display: flex;
         flex-direction: column;
+        justify-content: center;
         align-items: center;
-        width: 50vw;
-        min-width: 300px;
-        margin: 100px auto;
-        border: 2px solid black ;
-        border-radius: 10px;
-    }
-
-    form > div{
-        margin: 10px;
-    }
-
-    .btn-forms{
-        width: 100px;
-        height: 40px;
-        margin: 10px;
-    }
-</style>
-
-    <form method="POST">
-        {% csrf_token %}
-
-        <div class="form-group">
-            {{ user_form.username.errors }}
-            <label>Usuário: </label>
-            {{ user_form.username }}
-        </div>
         
-        <div class="form-group">
-            {{ user_form.password1.errors }}
-            <label>Senha: </label>
-            {{ user_form.password1 }}
-        </div>
-
-        <div class="form-group">
-            {{ user_form.password2.errors }}
-            <label>Confirmação de senha: </label>
-            {{ user_form.password2 }}
-        </div>
-
-        <input type="submit" value="Cadastrar" class="btn-forms">
+        margin: 10px;
+        padding: 30px 35px;
+        background-color: #201b2c;
         
-    </form>
+        border-radius: 20px;
+        box-shadow: 0px 10px 40px #00000056;
+    }
+
+    .cadastro > h1{
+        color: #00ff88;
+        font-weight: bold;
+    }
+
+    .cadastro > form{
+        width: 95%;
+    }
+
+    .form-group{
+        margin-bottom: 10px;
+    }
+
+    .campos-dados{
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .cadastro > form > input{ /*Estilização do botão*/
+        display: block;
+        width: 100%;
+
+        padding: 16px 0px;
+        margin: 35px auto 15px auto;
+
+        border: none;
+        border-radius: 30px;
+        box-shadow: 0px 7px 30px #00ff802a;
+
+        color: #2b134b;
+        background-color: #00ff88;
+        font-weight: 800;
+        letter-spacing: 2px; /*Espacamento entre as letra*/
+
+        cursor: pointer;
+    }
+    
+    input:focus {
+        outline: none;
+    }
+    
+    .cadastro > form > div{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .cadastro > form > div > label{
+        color: #e4e4e4;
+        margin: 5px 0px;
+    }
+    
+    .cadastro > form > div > input{
+        height: 50px;
+        font-size: 20px;
+        color: #f0ffffde;
+        background-color: #2f2841;
+        border: none;
+        border-radius: 30px;
+        box-shadow: 0px 10px 20px #00000056;
+        padding: 7px 15px;
+        cursor: pointer;
+    }
+    
+    .errorlist{
+        width:fit-content;
+        font-size: 14px;
+        color: white;
+        background-color: red;
+    }
+
+    .sem-cadastro{
+        color: white;
+    }
+
+    .sem-cadastro > a{
+        color: #77ffc0;
+    }
+
+    .sem-cadastro a:hover{
+        text-decoration: underline;
+    }
+
+    @media only screen and (max-height: 644px){
+        main{
+            height: auto;
+        }
+
+        footer{
+            position: fixed;
+            bottom: 0px;
+            left: 0px;
+            width: 100%;
+        }        
+    }
+
+    </style>
+
+    <div class="cadastro">
+        <h1>Cadastre-se</h1>
+        <form method="POST" autocomplete="on">
+            {% csrf_token %}
+
+            <div class="form-group">
+                {{ user_form.username.errors }}
+                <label>Usuário: </label>
+                {{ user_form.username }}
+            </div>
+            
+            <div class="form-group">
+                {{ user_form.password1.errors }}
+                <label>Senha: </label>
+                {{ user_form.password1 }}
+            </div>
+
+            <div class="form-group">
+                {{ user_form.password2.errors }}
+                <label>Confirmação de senha: </label>
+                {{ user_form.password2 }}
+            </div>
+
+            <input type="submit" value="CADASTRAR"></input>
+        </form>
+        <div class="sem-cadastro">
+            Já tem uma conta ? <a href=" {% url 'login' %} "> Entrar </a>
+        </div>
+    </div>
 
 {% endblock %}
+
+
+    

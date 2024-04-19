@@ -209,12 +209,12 @@
       cursor: pointer;
     }
 
-    .menu-oculto main{
+    .main-menu-oculto{
       min-height: calc(100vh - 96px - 64px);
       background-color: #2f2841;
     }
 
-    .menu-oculto main h2{
+    .main-menu-oculto h2{
       display: flex;
       justify-content: center;
       align-items: center;
@@ -222,7 +222,7 @@
       height: 64px;
     }
 
-    .menu-oculto main li{
+    .main-menu-oculto li{
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -230,17 +230,18 @@
       height: 56px;
     }
 
-    .menu-oculto footer{
+    .footer-menu-oculto{
       display: flex;
       justify-content: center;
       align-items: center;
+      background-color: #00ff88;
 
       font-size: 18px;
 
       height: 64px;
     }
 
-    .menu-oculto footer a{
+    .footer-menu-oculto a{
       text-decoration: none;
     }
 
@@ -270,17 +271,14 @@
       }
 
       @media only screen and  (max-width: 490px){
-        nav{
-          padding: 0px 30px;
-        }
+          nav{
+            padding: 0px 30px;
+          }
 
           .logomarca{
             font-size: 15px;
           }
-
-          footer p{
-            font-size: 12px;
-          }
+  
       }
 
       @media only screen and  (max-width: 380px){
@@ -356,7 +354,7 @@
         <span class="material-symbols-outlined" onclick=closeMenu()>close</span>
       </div>
     </header>
-    <main>
+    <div class="main-menu-oculto">
       <h2> Menu </h2>
       <ul>
         {% if not user.is_authenticated %}
@@ -398,12 +396,12 @@
             <hr>
         {% endif %}
       </ul>
-    </main>
-    <footer>
+    </div>
+    <div class="footer-menu-oculto">
       <div>
         <a href=" {% url 'logout' %} "> Sair </a>
       </div>
-    </footer>
+    </div>
   </section>
 
   <main>
