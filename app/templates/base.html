@@ -295,7 +295,7 @@
 <body>
   <header>
     <nav>
-      <div class="logomarca">Autotchelo Multimarcas</div>
+      <div class="logomarca"> <a href="{% url 'cars_list' %}">Autotchelo Multimarcas</a></div>
       <div class="botoes-navegacao">
         <ul>
           {% if not user.is_authenticated %}
