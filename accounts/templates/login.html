@@ -32,7 +32,7 @@
     }
     
     .esquerda-login{
-        width: 50vw;
+        width: 55vw;
         height: 82vh;
         
         display: flex;
@@ -41,18 +41,50 @@
         align-items: center;
     }
     
+    .ilustracao-carros{
+        width: 800px;
+        height: 500px;
+        display: flex;
+        border-radius: 10px;
+    }
+
+    .img1{
+        background-image: url(../../media/src/ferrari\ luxo.jpg);
+        border-radius: 10px 0px 0px 10px;
+    }
+
+    .img2{
+        background-image: url(../../media/src/mclaren\ luxo.jpg);
+    }
+
+    .img3{
+        background-image: url(../../media/src/porshe\ luxo.jpg);
+    }
+    
+    .img4{
+        background-image: url(../../media/src/bmw\ luxo.jpg);
+        border-radius: 0px 10px 10px 0px;
+    }
+        
+    .img{
+        background-size: cover;
+        background-position: center center;
+        flex-grow: 1;
+        transition-duration: 1s;
+        animation-timing-function: ease-in-out;
+    }
+
+    .img:hover{
+        flex-grow: 7;
+    }
+
     .esquerda-login > h1, h2{
+        display: none;
         color: #77ffc0;
     }
     
-    
-    .esquerda-login > img{
-        width: 35vw;
-        
-    }
-    
     .direita-login{
-        width: 55vw;
+        width: 45vw;
         height: 82vh;
         
         display: flex;
@@ -62,7 +94,6 @@
     
     .cadastro{
         width: 80%;
-        max-width: 500px;
 
         display: flex;
         flex-direction: column;
@@ -163,6 +194,17 @@
         padding: 10px;
     }
 
+    @media screen and (max-width: 1500px){
+        .ilustracao-carros{
+            display: none;
+            margin-left: -100vw;
+        }
+
+        .esquerda-login > h1, h2{
+            display: block;
+        }
+    }
+
     @media screen and (max-width: 850px) {
         .menu-login{
             flex-direction: column;
@@ -177,10 +219,6 @@
             margin-bottom: 30px;
         }
 
-        .esquerda-login > img{
-            width: 40%;
-        }
-
         .direita-login{
             width: 100%;
             height: 50%;
@@ -189,6 +227,12 @@
         .cadastro{
             width: 85%;
             padding-bottom: 10px;
+        }
+    }
+
+    @media screen and (max-height: 700px){
+        main{
+            height: auto;
         }
     }
 
@@ -206,6 +250,12 @@
 
 <div class="menu-login">
     <div class="esquerda-login">
+        <div class="ilustracao-carros">
+            <div class="img img1"></div>
+            <div class="img img2"></div>
+            <div class="img img3"></div>
+            <div class="img img4"></div>
+        </div>
         <h1>Faça o login </h1>
         <h2>E adiquira hoje o seu novo veículo</h2>
     </div>
