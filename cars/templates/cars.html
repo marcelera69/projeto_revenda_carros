@@ -28,7 +28,7 @@
         gap: 20px;
         margin: 0 auto;
         max-width: 1350px;
-        padding: 20px 20px 80px 20px;
+        padding: 20px 20px 160px 20px;
     }
 
     .hidden{
@@ -85,6 +85,20 @@
       width: 100%;
       height: 175px;
       object-fit: cover;
+    }
+
+    .formulario{
+        display: flex;
+        justify-content: space-between;
+        margin: auto;
+        padding-right: 30px;
+        max-width: 1350px;
+    }
+
+    .qtd-carros{
+        display: flex;
+        align-items: center;
+        color: #77ffc0;
     }
 
     form {
@@ -245,6 +259,14 @@
         padding-bottom: 5px;
     }
 
+    ::-webkit-scrollbar{
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb{
+        background-color: #00ff88;
+    }
+
     @media (max-width: 1300px) {
         .car-grid {
             grid-template-columns: repeat(4, 1fr);
@@ -265,6 +287,16 @@
     }
 
     @media (max-width: 800px) {
+
+        .qtd-carros{
+            font-size: 13px;
+        }
+
+        input[type="text"] {
+            width: 300px;
+            font-size: 14px;
+        }
+
         .car-grid {
             grid-template-columns: repeat(2, 1fr);
         }
@@ -273,24 +305,14 @@
             transition-delay: 0ms;
         }
 
+        .car-card{
+            max-width: 360px;
+        }
     }
 
-    @media (max-width: 600px) {
-        form{
-            padding: 20px 0px;
-        }
-
-        .car-grid{
-            padding: 10px;
-        }
-
-        input[type="text"] {
-            width: 250px;
-            font-size: 14px;
-        }
-        
-        .car-grid {
-            gap: 10px;
+    @media (max-width: 650px) {
+        .formulario{
+            padding-right: 5px;
         }
 
         input[type="text"] {
@@ -301,20 +323,48 @@
         button[type="submit"] {
             font-size: 10px;
         }
-
     }
     
-    
+    @media (max-width: 480px){
+        input[type="text"] {
+            width: 150px;
+        }
+
+        .qtd-carros{
+            font-size: 10px;
+        }
+    }
+
+    @media (max-width: 390px){
+        .car-grid{
+            padding: 5px 5px 100px 5px;
+            gap: 10px;
+        }
+
+        input[type="text"] {
+            width: 120px;
+            font-size: 7px;
+        }
+
+        button[type="submit"] {
+            font-size: 7px;
+        }
+    }
 
   </style>
 
-  <form method="GET" action="{% url 'cars_list' %}">
-    <div class="input-icon">
-        <span class="material-symbols-outlined simbolo-pesquisar " >search</span>
-        <input type="text" name="search" placeholder="Digite o modelo do carro" >
+  <div class="formulario">
+      <form method="GET" action="{% url 'cars_list' %}">
+        <div class="input-icon">
+            <span class="material-symbols-outlined simbolo-pesquisar " >search</span>
+            <input type="text" name="search" placeholder="Digite o modelo do carro" >
+        </div>
+            <button type="submit">Buscar</button>
+      </form>
+    <div class="qtd-carros">
+        <p>{{quantidade_carros}} carros encontrados</p>
     </div>
-        <button type="submit">Buscar</button>
-  </form>
+  </div>
 
 {% if cars %}
     <div class="car-grid">

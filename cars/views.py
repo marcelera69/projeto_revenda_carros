@@ -26,6 +26,10 @@ class CarListView(ListView):
 
         return cars
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['quantidade_carros'] = self.get_queryset().count()
+        return context
 
 
 class CarDetailView(DetailView):
