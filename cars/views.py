@@ -49,7 +49,7 @@ class NewCarView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Car
     form_class = CarForm
     template_name = 'new_car.html'
-    success_url = '/cars_list/'
+    success_url = '/cars/'
 
     def test_func(self):
         return is_superuser(self.request.user)
