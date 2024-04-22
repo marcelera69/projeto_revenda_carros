@@ -281,13 +281,18 @@
   
       }
 
-      @media only screen and  (max-width: 380px){
+      @media only screen and  (max-width: 450px){
         nav{
-          padding: 0px 20px;
+          padding: 0px 15px;
         }
 
-        .logomarca{
-            font-size: 12px;
+        .bemvindo-user{
+          border-left: none;
+          justify-self: unset;
+        }
+
+        .btn-fav, .btn-forum{
+          display: none;
         }
       }
 
@@ -330,9 +335,9 @@
           {% endif %}
         </div>
         {% if user.is_authenticated %}
-        <a href=" {% url 'cars_wish' %} "><span class="material-symbols-outlined">favorite</span></a>
+        <a href=" {% url 'cars_wish' %} "><span class="material-symbols-outlined btn-fav">favorite</span></a>
         {% endif %}
-        <a href="#"><span class="material-symbols-outlined">forum</span></a>
+        <a href="#"><span class="material-symbols-outlined btn-forum">forum</span></a>
         <div class="botao-menu-navegacao" onclick="openMenu()" >
           <span class="material-symbols-outlined">menu</span>
         </div>
@@ -379,6 +384,11 @@
         {% if user.is_authenticated %}
             <li>
               <a href="{% url 'new_car' %}">Cadastrar Carro</a>
+              <span class="material-symbols-outlined">expand_more</span>
+            </li>
+            <hr>
+            <li>
+              <a href="{% url 'cars_wish' %}">Favoritos</a>
               <span class="material-symbols-outlined">expand_more</span>
             </li>
             <hr>

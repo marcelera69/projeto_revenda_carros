@@ -294,7 +294,7 @@
 
         input[type="text"] {
             width: 300px;
-            font-size: 14px;
+            font-size: 15px;
         }
 
         .car-grid {
@@ -312,42 +312,36 @@
 
     @media (max-width: 650px) {
         .formulario{
-            padding-right: 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0px;
         }
-
-        input[type="text"] {
-            width: 200px;
-            font-size: 10px;
-        }
-    
-        button[type="submit"] {
-            font-size: 10px;
-        }
-    }
-    
-    @media (max-width: 480px){
-        input[type="text"] {
-            width: 150px;
-        }
-
+        
         .qtd-carros{
-            font-size: 10px;
+            justify-content: center;
         }
-    }
 
-    @media (max-width: 390px){
-        .car-grid{
-            padding: 5px 5px 100px 5px;
-            gap: 10px;
+    }
+    
+    @media (max-width: 450px){
+        .formulario form{
+            padding: 15px;
         }
 
         input[type="text"] {
-            width: 120px;
-            font-size: 7px;
-        }
+            width: 240px;
+            font-size: 10px;
+        }   
 
         button[type="submit"] {
-            font-size: 7px;
+            font-size: 10px;
+        }
+        .car-grid {
+            align-items: center;
+            grid-template-columns: repeat(1, 1fr);
+            padding: 30px 30px 160px 30px;
+            gap: 20px;
         }
     }
 
