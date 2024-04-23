@@ -8,10 +8,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
 
-def is_superuser(user):
-    return user.is_superuser
-
-
 class CarListView(ListView):
     model = Car
     template_name = 'cars.html'
@@ -37,18 +33,15 @@ class CarDetailView(DetailView):
     template_name = 'car_detail.html'
 
 
-class NewCarView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+class NewCarView(LoginRequiredMixin, CreateView):
     model = Car
     form_class = CarForm
     template_name = 'new_car.html'
     success_url = '/cars/'
 
-    def test_func(self):
-        return is_superuser(self.request.user)
 
 
-
-class CarUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+class CarUpdateView(LoginRequiredMixin,  UpdateView):
     model = Car
     form_class = CarForm
     template_name = 'car_update.html'
@@ -56,16 +49,12 @@ class CarUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def get_success_url(self):
         return reverse_lazy('car_detail', kwargs={'pk': self.object.pk})
     
-    def test_func(self):
-        return is_superuser(self.request.user)
-    
 
 
-class CarDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+class CarDeleteView(LoginRequiredMixin, DeleteView):
     model = Car
     template_name = 'car_delete.html'
     success_url = '/cars/'
 
-    def test_func(self):
-        return is_superuser(self.request.user)
+    
 
