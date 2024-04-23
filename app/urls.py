@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from cars.views import NewCarView, CarListView, CarWishListView, add_car_to_wishlist, CarDetailView, CarUpdateView, CarDeleteView
+from cars.views import NewCarView, CarListView, CarDetailView, CarUpdateView, CarDeleteView
 from accounts.views import register_view, login_view, logout_view
 
 
