@@ -36,5 +36,5 @@ class CarInventory(models.Model):
     
 
 class CarWish(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     cars = models.ManyToManyField(Car)

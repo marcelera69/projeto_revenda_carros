@@ -2,6 +2,7 @@ from django.db.models.query import QuerySet
 from cars.models import Car, CarWish
 from cars.forms import CarForm
 from django.urls import reverse_lazy
+from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -43,6 +44,13 @@ class CarWishListView(LoginRequiredMixin, ListView):
     template_name = 'cars_wish.html'
     context_object_name = 'wish_list'
 
+
+@login_required(login_url='login')
+def add_car_to_wishlist(request, pk):
+    car = get_object_or_404(Car, pk=pk)
+    car_wish, created = CarWish.objects.get_or_create(user=request.user)
+    car_wish.cars.add(car)
+    return redirect('cars_wish')  
 
 
 class NewCarView(LoginRequiredMixin, UserPassesTestMixin, CreateView):

@@ -299,7 +299,7 @@
   </style>
 </head>
 
-<body>
+<body >
   <header>
     <nav>
       <div class="logomarca"> <a href=" {% url 'cars_list' %} "> Autotchelo Multimarcas </a> </div>
@@ -318,7 +318,7 @@
               <li><a href="{% url 'new_car' %}">Cadastrar Carro</a></li>
               <li><a href=" {% url 'admin:index' %} ">Adiministração</a></li>
             {% else %}
-              <li> <a href="{% url 'cars_wish' %}"> Meus carros </a></li>
+              <li> <a href="#"> Meus carros </a></li>
             {% endif %}
             <li><a href="{% url 'logout' %}">Sair</a></li>
 
@@ -335,7 +335,7 @@
           {% endif %}
         </div>
         {% if user.is_authenticated %}
-        <a href=" {% url 'cars_wish' %} "><span class="material-symbols-outlined btn-fav">favorite</span></a>
+        <a href="#"><span class="material-symbols-outlined btn-fav">favorite</span></a>
         {% endif %}
         <a href="#"><span class="material-symbols-outlined btn-forum">forum</span></a>
         <div class="botao-menu-navegacao" onclick="openMenu()" >
@@ -388,7 +388,7 @@
             </li>
             <hr>
             <li>
-              <a href="{% url 'cars_wish' %}">Favoritos</a>
+              <a href="#"> Favoritos</a>
               <span class="material-symbols-outlined">expand_more</span>
             </li>
             <hr>
@@ -451,7 +451,6 @@
         })
       }
   </script>
-
 </body>
 </html>
 

@@ -33,13 +33,15 @@
 
     <section class="cars-wish">
         <h1>Minha Lista de Desejos</h1>
-        <ul>
-        {% for car in wishlist.cars.all %}
-            <li>{{ car.model }} {{ car.brand }}</li>
-        {% empty %}
-            <li>Nenhum carro na lista de desejos.</li>
-        {% endfor %}
-        </ul>
+        {% if wish_list %}
+            <ul>
+                {% for car in wish_list %}
+                <li>{{ car.model }} {{ car.brand }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Nenhum carro na lista de desejos</p>
+        {% endif %}
     </section>
 
 
