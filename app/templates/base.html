@@ -314,8 +314,8 @@
           <li><a href="{% url 'cars_list' %}">Carros</a></li>
 
           {% if user.is_authenticated %}
-            {% if user.is_superuser %}
-              <li><a href="{% url 'new_car' %}">Cadastrar Carro</a></li>
+          <li><a href="{% url 'new_car' %}">Cadastrar Carro</a></li>
+          {% if user.is_superuser %}
               <li><a href=" {% url 'admin:index' %} ">Adiministração</a></li>
             {% else %}
               <li> <a href="#"> Meus carros </a></li>

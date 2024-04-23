@@ -123,16 +123,14 @@
       </div>
     </div>
     {% if user.is_authenticated %}
-      {% if user.is_superuser %}
       <div class="buttons-container">
         <a href="{% url 'car_update' pk=object.pk %}" class="btn btn-primary">Editar</a>
         <a href="{% url 'car_delete' pk=object.pk %}" class="btn btn-danger">Apagar</a>
       </div>
-      {% else %}
-        <div class="buttons-container">
-          <a href="{% url 'cars_list' %}" class="btn btn-danger">Voltar</a>
-        </div>
-      {% endif %}
+    {% else %}
+      <div class="buttons-container">
+        <a href="{% url 'cars_list' %}" class="btn btn-danger">Voltar</a>
+      </div>
     {% endif %}
   </section>
 {% endblock %}
