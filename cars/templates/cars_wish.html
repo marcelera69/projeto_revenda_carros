@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <style>
+        
+        main{
+            display: flex;
+            flex-direction: row;
+            min-height: calc(100vh - 60px - 45px);
+        }
+
+        .card-info{
+            width: 253px;
+        }
+
+        .card-info div{
+            width: 100%;
+        }
+
+        .cars-wish{
+            width: 100%;
+        }
+
+    </style>
+    
+    <section class="card-info">
+        <div>
+            <h2>{{user.username}}</h2>
+            <h3> exemploteste@hotmail.com </h3>
+        </div>
+    </section>
+
+    <section class="cars-wish">
+        <h1>Minha Lista de Desejos</h1>
+        {% if wish_list %}
+            <ul>
+                {% for car in wish_list %}
+                <li>{{ car.model }} {{ car.brand }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Nenhum carro na lista de desejos</p>
+        {% endif %}
+    </section>
+
+
+
+{% endblock %}
