@@ -13,25 +13,114 @@
             background-color: #2f2841;
         }
 
-        .div-formulario{
-            width: 50vw;
-            color: white;
-            min-width: 300px;
+        .cadastro{
+            width: 55%;
             margin: auto;
-            border: 2px solid black ;
-            border-radius: 10px;
+
+            padding: 30px 35px;
+            background-color: #201b2c;
+
+            border-radius: 20px;
+            box-shadow: 0px 10px 40px #201b2c;
         }
 
-        form{
+        .cadastro > h1{
+            color: #00ff88;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .cadastro > form{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .cadastro > form > div{
             display: flex;
             flex-direction: column;
-            align-items: center;
+            width: max-content;
+            padding: 5px;
         }
 
-        form > p{
-            margin: 5px;
+        .cadastro > form > div > input{  /*Estilização dos campos para entrada de dados*/
+            display: block;
+            margin: auto;
+            width: 100%;
+            padding: 5px;
+            
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0px 10px 40px #00000056;
+            
+            background: #514869;
+            color: #f0ffffde;
         }
 
+        .cadastro > form > div > select{  /*Estilização dos campos para entrada de dados*/
+            display: block;
+            margin: auto;
+            width: 100%;
+            
+            padding: 5px;
+            
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0px 10px 40px #00000056;
+            
+            background: #514869;
+            color: #f0ffffde;
+
+            resize: none;
+        }
+
+        .cadastro > form > div > textarea{  /*Estilização dos campos para entrada de dados*/
+            display: block;
+            margin: auto;
+            width: 100%;
+            height: 70px;
+            padding: 5px;
+            
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0px 10px 40px #00000056;
+            
+            background: #514869;
+            color: #f0ffffde;
+
+            resize: none;
+        }
+
+        .cadastro > form > div > label{
+            color: #f0ffffde;
+            
+            margin-bottom: 10px;
+        }
+
+        .cadastro > form > div > input::placeholder{
+            color: #f0ffffde;
+        }
+
+        .cadastro > form > input{ /*Estilização do botão*/
+            display: block;
+            width: 100%;
+            
+
+            padding: 16px 0px;
+            margin: 25px auto 15px auto;
+
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0px 7px 30px #00ff802a;
+
+            color: #2b134b;
+            background-color: #00ff88;
+            font-weight: 800;
+            letter-spacing: 2px; /*Espacamento entre as letra*/
+
+            cursor: pointer;
+        }
+       
         .btn-forms{
             display: inline-block;
             background-color: #00ff88;
@@ -56,16 +145,19 @@
             width: 100%;
         }
 
+        @media only screen and (max-height: 644px){
+            
+        }
+
     </style>
 
-    <div class="div-formulario">
+    <div class="cadastro">
+        <h1> Cadastro de Automóvel </h1>
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            {{form.as_p}}
-            <div>
-                <input type="submit" value="Cadastrar" class="btn-forms">
-                <input type="reset" value="Limpar" class="btn-forms">
-            </div>
+            {{form}}    
+
+            <input type="submit" value="Cadastrar" class="btn-forms">
         </form>
     </div>
 {% endblock %}
