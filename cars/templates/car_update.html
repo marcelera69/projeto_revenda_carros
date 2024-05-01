@@ -3,130 +3,209 @@
 {% block content %}
 
   <style>
-    body{
-      background-color: #2f2841;
-    }
+        body{
+            background-color: #2f2841; 
+        }
 
-    main{
-      background-color: #2f2841;
-    }
-    
-    form {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-      background-color: #f5f5f5;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    }
+        main{
+            display: flex;
+            align-items: center;
+            height: 100%;
+            background-color: #2f2841;
+        }
 
-    form h1 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      text-align: center;
-    }
+        .cadastro{
+            width: 55%;
+            max-width: 1000px;
+            margin: 50px auto;
 
-    table {
-      margin: 0 auto;
-      border-collapse: collapse;
-      width: 100%;
-      max-width: 600px;
-    }
+            padding: 30px 35px;
+            background-color: #201b2c;
 
-    th, td {
-      padding: 4px;
-      text-align: left;
-      border-bottom: 1px solid #ddd;
-    }
+            border-radius: 20px;
+            box-shadow: 0px 10px 40px #201b2c;
+        }
 
-    th {
-      background-color: #f2f2f2;
-    }
+        .cadastro > h1{
+            color: #00ff88;
+            font-weight: bold;
+            text-align: center;
+        }
 
-    input[type="text"], input[type="number"], select, textarea {
-      padding: 8px;
-      font-size: 14px;
-      border: 2px solid #ddd;
-      border-radius: 4px;
-      width: 100%;
-      max-width: 300px;
-      margin-bottom: 8px;
-      transition: border-bottom-color 0.3s ease-in-out;
-    }
+        .cadastro > form{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
 
-    input[type="text"]:focus, input[type="number"]:focus, select:focus, textarea:focus {
-      outline: none;
-      border-bottom-color: #0096c7;
-    }
+        .cadastro > form > div{
+            display: flex;
+            flex-direction: column;
+            width: max-content;
+            padding: 5px;
+        }
 
-    .btn {
-      background-color: #0096c7;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      font-size: 16px;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color 0.3s ease-in-out;
-    }
+        .cadastro > form > div > input{  /*Estilização dos campos para entrada de dados*/
+            display: block;
+            margin: auto;
+            width: 100%;
+            padding: 5px;
+            
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0px 10px 40px #00000056;
+            
+            background: #514869;
+            color: #f0ffffde;
+        }
 
-    .buttons-container {
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
+        .cadastro > form > div > select{  /*Estilização dos campos para entrada de dados*/
+            display: block;
+            margin: auto;
+            width: 100%;
+            
+            padding: 5px;
+            
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0px 10px 40px #00000056;
+            
+            background: #514869;
+            color: #f0ffffde;
 
-    .btn {
-      display: inline-block;
-      background-color: #0096c7;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      font-size: 16px;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color 0.2s ease-in-out;
-      margin: 0 10px;
-    }
+            resize: none;
+        }
 
-    .btn:hover {
-      background-color: #0d6785;
-    }
+        .cadastro > form > div > textarea{  /*Estilização dos campos para entrada de dados*/
+            display: block;
+            margin: auto;
+            width: 100%;
+            height: 70px;
+            padding: 5px;
+            
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0px 10px 40px #00000056;
+            
+            background: #514869;
+            color: #f0ffffde;
 
-    .btn-danger {
-      background-color: #d9534f;
-      text-decoration: none !important;
-    }
+            resize: none;
+        }
 
-    .btn-danger:hover {
-      background-color: #d2221c;
-    }
+        .cadastro > form > div > label{
+            color: #f0ffffde;
+            
+            margin-bottom: 10px;
+        }
 
-    .error-message {
-      color: #d9534f;
-      font-size: 14px;
-      margin-top: 5px;
-    }
+        .cadastro > form > div > input::placeholder{
+            color: #f0ffffde;
+        }
 
-    a {
-      text-decoration: none !important;
-    }
+        .cadastro > form > input{ /*Estilização do botão*/
+            display: block;
+            width: 100%;
+            
+
+            padding: 16px 0px;
+            margin: 25px auto 15px auto;
+
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0px 7px 30px #00ff802a;
+
+            color: #2b134b;
+            background-color: #00ff88;
+            font-weight: 800;
+            letter-spacing: 2px; /*Espacamento entre as letra*/
+
+            cursor: pointer;
+        }
+       
+
+        @media only screen and (max-height: 1000px){
+            .cadastro{
+                width: 70%;
+            }
+        }
+
+        .buttons-container {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          margin: 10px 0;
+        }
+
+        .btn {
+          display: inline-block;
+          background-color: #0096c7;
+          color: #fff;
+          border: none;
+          padding: 10px 20px;
+          font-size: 16px;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: background-color 0.2s ease-in-out;
+          margin: 5px 10px;
+        }
+
+        .btn:hover {
+          background-color: #0d6785;
+        }
+
+        .btn-danger {
+          background-color: #d9534f;
+          text-decoration: none !important;
+        }
+
+        .btn-danger:hover {
+          background-color: #d2221c;
+        }
+
+        .error-message {
+          color: #d9534f;
+          font-size: 14px;
+          margin-top: 5px;
+        }
+
+        a {
+          text-decoration: none !important;
+        }
 
   </style>
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <h1>Editar Carro</h1>
-    <table>
-      {{ form.as_table }}
-    </table>
-    <div>
-      <div class="buttons-container">
-        <input type="submit" value="Salvar Alterações" class="btn btn-primary">
-        <a href="{% url 'cars_list' %}" class="btn btn-secondary">Cancelar</a>
-        <a href="{% url 'car_delete' pk=object.pk %}" class="btn btn-danger">Apagar Veículo</a>
-       </div>
-      </div>
-    </div>
-  </form>
+  <div class="cadastro">
+    <h1> Editar Veículo </h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form}}    
+  
+        <div>
+          <div class="buttons-container">
+            <input type="submit" value="Salvar Alterações" class="btn btn-primary">
+            <a href="{% url 'cars_list' %}" class="btn btn-secondary">Cancelar</a>
+            <a href="{% url 'car_delete' pk=object.pk %}" class="btn btn-danger">Apagar Veículo</a>
+           </div>
+          </div>
+        </div>
+    </form>
+  </div>
 {% endblock %}
+
+
+<div class="cadastro">
+  <h1> Editar Veículo </h1>
+  <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{form}}    
+
+      <div>
+        <div class="buttons-container">
+          <input type="submit" value="Salvar Alterações" class="btn btn-primary">
+          <a href="{% url 'cars_list' %}" class="btn btn-secondary">Cancelar</a>
+          <a href="{% url 'car_delete' pk=object.pk %}" class="btn btn-danger">Apagar Veículo</a>
+         </div>
+        </div>
+      </div>
+  </form>
+</div>
