@@ -17,12 +17,12 @@ Funcionalidades de Cadastro:
 • Permitir Exclusão de veículos
 -----------------------------------------------------------------------------
 
-#Funcionalidades de Segurança
+Funcionalidades de Segurança
 
 • Permite qualquer pessoa acessar e visualizar o catálogo, mas somente usuários logados podem cadastrar, alterar e excluir um veículo.
 -----------------------------------------------------------------------------
 
-#Funcionalidades de Dados
+Funcionalidades de Dados
 
 • Todos os dados são salvos em um banco de dados PostgreSQL.
 -----------------------------------------------------------------------------
