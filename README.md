@@ -7,11 +7,11 @@ Funcionalidades de Cadastro:
 
 • Permitir Cadastro de Usuários
 • Permitir o Cadastro de Veículos
- - Modelo
- - Marca
- - Ano do Modelo
- - Km e Valor
- - Imagem
+  - Modelo
+  - Marca
+  - Ano do Modelo
+  - Km e Valor
+  - Imagem
 • Permitir Listagem de veículos
 • Permitir Alteração de veículos
 • Permitir Exclusão de veículos
