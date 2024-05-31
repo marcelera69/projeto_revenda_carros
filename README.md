@@ -12,9 +12,9 @@ Funcionalidades de Cadastro:
   - Ano do Modelo
   - Km e Valor
   - Imagem
-• Permitir Listagem de veículos
-• Permitir Alteração de veículos
-• Permitir Exclusão de veículos
+• Permitir Listagem de veículos /
+• Permitir Alteração de veículos /
+• Permitir Exclusão de veículos /
 -----------------------------------------------------------------------------
 
 Funcionalidades de Segurança
